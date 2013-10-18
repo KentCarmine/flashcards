@@ -5,8 +5,8 @@ class FlashStack
     @deck = []
   end
   
-  def load
-    File.open('flashcard_samples.txt', "r") do |file|
+  def load(filename)
+    File.open(filename, "r") do |file|
       file.each_slice(3) do |row| 
         #p row[0]
       temp_hash = { :definition => row[0].chomp, :term => row[1]}

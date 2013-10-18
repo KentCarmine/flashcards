@@ -1,7 +1,7 @@
-
-
 class FlashStack 
   
+  attr_reader :solved
+
   def initialize
     @deck = []
     @solved = []
@@ -11,8 +11,10 @@ class FlashStack
     File.open(filename, "r") do |file|
       file.each_slice(3) do |row| 
         temp_hash = { :definition => row[0].chomp, :term => row[1].chomp}
-      @deck << FlashCard.new(temp_hash)
+        @deck << FlashCard.new(temp_hash)
+      end
     end
+    
     shuffle_deck
   end
   
@@ -40,9 +42,6 @@ class FlashStack
 
 end
 
-
-# FlashStack.new.load
-
 class FlashCard
 
   attr_reader :definition, :term, :attempts
@@ -56,7 +55,5 @@ class FlashCard
   def increment_attempts
     @attempts += 1
   end
-
-
 
 end

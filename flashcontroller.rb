@@ -1,6 +1,5 @@
-require './flash_stack.rb'
-require './flashcard.rb'
-require './flash_presenter.rb'
+require './flash_model.rb'
+require './flash_presenter.rb' 
 
 class FlashController
 
@@ -35,8 +34,17 @@ class FlashController
       
       guess_status = validate_guess(guess)
       @presenter.display_t_f(guess_status)
-    end
 
+      @card.increment_attempts
+
+      if guess_status
+        @flash_stack.add_to_solved_deck(@card)
+      else
+        @flash_stack.add_to_unsolved_deck(@card)
+      end
+
+    end
+    @presenter.display_statistics(@flash_stack.solved)
   end
 
   private
@@ -44,7 +52,7 @@ class FlashController
 
 end
 
-flash_game = FlashController.new('flashcard_samples.txt')
+raise ArgumentError unless ARGV.any?
+
+flash_game = FlashController.new(ARGV[0])
 flash_game.run!
-
-

@@ -9,8 +9,7 @@ class FlashStack
   def load(filename)
     File.open(filename, "r") do |file|
       file.each_slice(3) do |row| 
-        #p row[0]
-      temp_hash = { :definition => row[0].chomp, :term => row[1].chomp}
+        temp_hash = { :definition => row[0].chomp, :term => row[1].chomp}
       @deck << FlashCard.new(temp_hash)
     end
     shuffle_deck

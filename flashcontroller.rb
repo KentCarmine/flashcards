@@ -26,13 +26,17 @@ class FlashController
 
   def run!
     @presenter.quit_prompt
+
     until flash_stack.empty?
       prompt_guess
-      guess = @presenter.user_guess #FlashPresenter.user
+      guess = @presenter.user_guess 
+
       break if guess == "exit"
+      
       guess_status = validate_guess(guess)
       @presenter.display_t_f(guess_status)
     end
+
   end
 
   private

@@ -7,7 +7,5 @@ class FlashCard
     @definition = params[:definition]
     @term = params[:term]
   end
-
-
-
+  
 end

@@ -1,7 +1,3 @@
-# require "./flash_stack.rb"
-# require "./flashcard.rb"
-
-
 class FlashPresenter
 
   def display_card(card)
@@ -27,10 +23,3 @@ class FlashPresenter
     puts "Enter \"exit\" to quit."
   end
 end
-
-
-# m = FlashPresenter.new
-# m.display_card( FlashCard.new(:definition => "is it or not", :term => "badass"))
-
-# m.user_guess
-# m.display_t_f(true)

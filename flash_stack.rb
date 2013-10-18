@@ -1,4 +1,5 @@
 require "./flashcard.rb"
+
 class FlashStack 
   
   def initialize
@@ -9,11 +10,13 @@ class FlashStack
     File.open(filename, "r") do |file|
       file.each_slice(3) do |row| 
         #p row[0]
-      temp_hash = { :definition => row[0].chomp, :term => row[1]}
+      temp_hash = { :definition => row[0].chomp, :term => row[1].chomp}
       @deck << FlashCard.new(temp_hash)
     end
-    end
-   
+    shuffle_deck
+  end
+  
+
 
   end
 
@@ -21,6 +24,14 @@ class FlashStack
     @deck.shift
   end
 
-end
+  def empty?
+    @deck.empty?
+  end
 
-# FlashStack.new.load
+  private
+
+  def shuffle_deck
+    @deck.shuffle!
+  end
+
+end

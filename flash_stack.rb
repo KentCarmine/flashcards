@@ -1,4 +1,4 @@
-
+require "csv"
 
 class FlashStack 
   
@@ -9,6 +9,8 @@ class FlashStack
   def load
 
     CSV.foreach(file, "wb") do |row|
+      if 
+      @deck << FlashCard.new(row[0])
 
   end
 

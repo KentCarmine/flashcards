@@ -1,5 +1,4 @@
-require "csv"
-
+require "./flashcard.rb"
 class FlashStack 
   
   def initialize
@@ -7,10 +6,14 @@ class FlashStack
   end
   
   def load
-
-    CSV.foreach(file, "wb") do |row|
-      if 
-      @deck << FlashCard.new(row[0])
+    File.open('flashcard_samples.txt', "r") do |file|
+      file.each_slice(3) do |row| 
+        #p row[0]
+      temp_hash = { :definition => row[0], :term => row[1]}
+      @deck << FlashCard.new(temp_hash)
+    end
+    end
+   
 
   end
 
@@ -19,3 +22,5 @@ class FlashStack
   end
 
 end
+
+ FlashStack.new.load

@@ -22,7 +22,7 @@ class FlashPresenter
     if true_false
       puts "CORRECT"
     else 
-      put "THAT'S FALSE LITTLE YO"
+      put "THAT'S FALSE "
     end
     puts
   end 

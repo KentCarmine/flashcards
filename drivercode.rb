@@ -1,4 +1,4 @@
-require "./flashstack.rb"
+require "./flash_stack.rb"
 require "./flashcard.rb"
 
 # Create FlashStack object
@@ -13,9 +13,9 @@ first_card = test_flash_stack.remove!
 puts "Definition"
 puts first_card.definition
 #   check that term of that card == "alias"
-if first_card.term == "alias" 
+if first_card.term.chomp == "alias" 
   puts "CORRECT"
-else 
+else
   puts "WRONG"
 end
 #     if it does
